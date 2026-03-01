@@ -33,7 +33,7 @@ const PaperTrader = ({ pair, setTradeHistory }) => {
     };
 
     fetchPrice();
-    const interval = setInterval(fetchPrice, 5000); // Update every 5 seconds
+    const interval = setInterval(fetchPrice, 5000); 
     return () => clearInterval(interval);
   }, [pair]);
 
