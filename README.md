@@ -28,11 +28,58 @@ React - 18+
 - Node.js & npm installed
 - Python 3.9+ installed
 ### 1. Clone the Repository
+```bash
 git clone <your-repo-url>
 cd AI-Forex-Dashboard
+```
 ### 2. Backend Setup (Python/FastAPI)
-- Navigate to the backend folder (where main.py is located).
-- Create a virtual environment:
+#### 1. Navigate to the backend folder (where main.py is located).
+#### 2. Create a virtual environment:
   ```bash
- python -m venv venv
- source venv/bin/activate  # On Windows: venv\Scripts\activate
+  python -m venv venv
+  source venv/bin/activate  # On Windows: venv\Scripts\activate
+  ```
+#### 3. Install dependencies:
+  ```bash
+   pip install fastapi uvicorn yfinance pandas pandas_ta numpyRun the server:
+```
+#### 4. Run the server:
+```bash
+uvicorn main:app --reload --port 8000
+```
+- The API will be running at http://localhost:8000
+### 3. Frontend Setup (React)
+#### 1. Navigate to the frontend folder.
+#### 2. Install dependencies:
+```bash
+npm install axios react-select recharts lottie-react
+```
+(Ensure Tailwind CSS is configured in your project).
+#### 3. Run the development server:
+```bash
+npm run dev
+```
+The app will be running at http://localhost:5173
+# 🔌 API Endpoints
+| Method | Endpoint            | Description                                              |
+|--------|--------------------|----------------------------------------------------------|
+| GET    | `/`                | Root health check                                        |
+| GET    | `/pairs`           | Returns list of available forex pairs                    |
+| GET    | `/signals/{pair}`  | Returns current price, RSI, MACD, and signal             |
+| GET    | `/backtest/{pair}` | Returns backtest statistics and trade history            |
+# ⚙️ Logic Overview
+## Signal Generation
+#### The /signals endpoint calculates:
+- RSI (14): If RSI < 30 ➔ **BUY**. If RSI > 70 ➔ SELL.
+- MACD (12, 26, 9): Used for trend confirmation visualization.
+## Backtesting
+#### The /backtest endpoint simulates a simple RSI reversal strategy over the last 6 months (1h timeframe):
+- Entry: Buy when RSI drops below 30.
+- Exit: Sell when RSI rises above 70.
+- Metrics: Calculates Win Rate, Profit Factor, Max Drawdown, and Total Return in pips.
+# 🎨 Customization
+- Adding Pairs: Modify the /pairs endpoint in main.py to add more currency pairs.
+- Strategy Logic: Edit the get_signals or backtest functions in main.py to implement different indicators (e.g., Bollinger Bands, Moving Averages).
+- Styling: The frontend uses Tailwind CSS. You can modify the color scheme (currently dark cyan/blue theme) in the component JSX files.
+# 📜 License
+This project is open-source and available under the MIT License.
