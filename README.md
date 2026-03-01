@@ -33,5 +33,6 @@ cd AI-Forex-Dashboard
 ### 2. Backend Setup (Python/FastAPI)
 - Navigate to the backend folder (where main.py is located).
 - Create a virtual environment:
--- python -m venv venv
--- source venv/bin/activate  # On Windows: venv\Scripts\activate
+  ```bash
+ python -m venv venv
+ source venv/bin/activate  # On Windows: venv\Scripts\activate
