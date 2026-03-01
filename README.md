@@ -45,7 +45,7 @@ cd AI-Forex-Dashboard
 ```
 #### 4. Run the server:
 ```bash
-uvicorn main:app --reload --port 8000
+python main.py
 ```
 - The API will be running at http://localhost:8000
 ### 3. Frontend Setup (React)
