@@ -13,33 +13,33 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0b1120] text-white font-sans">
-      
+
       {/* Dynamic Header */}
       <Header pair={selectedPair} setPair={setSelectedPair} />
 
       {/* Main Content */}
-      <div className="p-6 lg:p-8 max-w-[1600px] mx-auto">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Left Column (Chart & History) */}
-          <div className="lg:col-span-2 space-y-6">
-             <Chart pair={selectedPair} />
-<BacktestResults pair={selectedPair} />
-<TradeHistory trades={tradeHistory} />
+      <div className="p-6 lg:p-8 max-w-[1700px] mx-auto">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          {/* Left Column (70%) */}
+          <div className="lg:col-span-9 space-y-6">
+            <Chart pair={selectedPair} />
+            <BacktestResults pair={selectedPair} />
           </div>
 
-          {/* Right Column (Tools) */}
-          <div className="space-y-6">
-            <PaperTrader 
-  pair={selectedPair} 
-  setTradeHistory={setTradeHistory} 
-/>
+          {/* Right Column (30%) */}
+          <div className="lg:col-span-3 space-y-6">
+            <PaperTrader
+              pair={selectedPair}
+              setTradeHistory={setTradeHistory}
+            />
             <RiskCalculator />
-            
+            <TradeHistory trades={tradeHistory} />
           </div>
 
         </div>
+
       </div>
     </div>
   );

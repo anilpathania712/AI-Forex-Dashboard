@@ -45,7 +45,7 @@ const Chart = ({ pair }) => {
                 <span>Market View</span>
                 <button
                     onClick={handleFullscreen}
-                    className="text-white text-xs bg-blue-600 px-2 py-1 rounded"
+                    className="text-white text-xs bg-blue-600 px-2 py-1 rounded hover:bg-sky-700 cursor-pointer"
                 >
                     Fullscreen
                 </button>
