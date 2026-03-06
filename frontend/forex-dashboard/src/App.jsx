@@ -7,40 +7,47 @@ import TradeHistory from "./components/TradeHistory";
 import PaperTrader from "./components/PaperTrader";
 
 function App() {
-  // Central state for the selected pair
   const [selectedPair, setSelectedPair] = useState("EURUSD");
   const [tradeHistory, setTradeHistory] = useState([]);
 
   return (
-    <div className="min-h-screen bg-[#0b1120] text-white font-sans">
+    <div className="min-h-screen text-white" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
 
-      {/* Dynamic Header */}
+      {/* Header */}
       <Header pair={selectedPair} setPair={setSelectedPair} />
 
       {/* Main Content */}
-      <div className="p-6 lg:p-8 max-w-[1700px] mx-auto">
+      <main className="px-4 py-6 sm:px-6 lg:px-8 max-w-[1800px] mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-          {/* Left Column (70%) */}
-          <div className="lg:col-span-9 space-y-6">
-            <Chart pair={selectedPair} />
-            <BacktestResults pair={selectedPair} />
+          {/* Left Column — Chart & Backtest */}
+          <div className="lg:col-span-8 xl:col-span-9 space-y-5">
+            <div className="animate-fade-in-up delay-1">
+              <Chart pair={selectedPair} />
+            </div>
+            <div className="animate-fade-in-up delay-3">
+              <BacktestResults pair={selectedPair} />
+            </div>
           </div>
 
-          {/* Right Column (30%) */}
-          <div className="lg:col-span-3 space-y-6">
-            <PaperTrader
-              pair={selectedPair}
-              setTradeHistory={setTradeHistory}
-            />
-            <RiskCalculator />
-            <TradeHistory trades={tradeHistory} />
+          {/* Right Column — Trading & Tools */}
+          <div className="lg:col-span-4 xl:col-span-3 space-y-5">
+            <div className="animate-fade-in-up delay-2">
+              <PaperTrader
+                pair={selectedPair}
+                setTradeHistory={setTradeHistory}
+              />
+            </div>
+            <div className="animate-fade-in-up delay-4">
+              <RiskCalculator />
+            </div>
+            <div className="animate-fade-in-up delay-5">
+              <TradeHistory trades={tradeHistory} />
+            </div>
           </div>
 
         </div>
-
-      </div>
+      </main>
     </div>
   );
 }
